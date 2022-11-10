@@ -6,7 +6,7 @@
 /*   By: twang <twang@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 17:11:39 by twang             #+#    #+#             */
-/*   Updated: 2022/11/09 10:22:24 by twang            ###   ########.fr       */
+/*   Updated: 2022/11/10 16:13:57 by twang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,11 @@
 
 void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	size_t			i;
 	unsigned char	*src2;
 	unsigned char	*dst2;
 
 	if (!dst && !src)
 		return (NULL);
-	i = 0;
 	src2 = (unsigned char *)src;
 	dst2 = (unsigned char *)dst;
 	if (src2 > dst2)
