@@ -6,7 +6,7 @@
 /*   By: twang <twang@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 17:56:05 by twang             #+#    #+#             */
-/*   Updated: 2022/11/10 09:51:07 by twang            ###   ########.fr       */
+/*   Updated: 2022/11/14 11:09:31 by twang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,11 @@ char	*ft_strrchr(const char *s, int c)
 
 	i = ft_strlen(s);
 	c2 = (char) c;
-	while (i > 0)
+	while (i > 0 && s[i] != c2)
 	{
-		if (s[i] == c2)
-			return ((char *) &s[i]);
 		i--;
 	}
+	if (s[i] == c2)
+		return ((char *) &s[i]);
 	return (NULL);
 }
