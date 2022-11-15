@@ -1,19 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: twang <twang@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/14 16:04:39 by twang             #+#    #+#             */
-/*   Updated: 2022/11/15 10:58:15 by twang            ###   ########.fr       */
+/*   Created: 2022/11/15 17:52:01 by twang             #+#    #+#             */
+/*   Updated: 2022/11/15 17:56:06 by twang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putstr_fd(char *s, int fd)
+char	**ft_split(char const *s, char c)
 {
-	if (s)
-		write(fd, s, ft_strlen(s));
+	
+	return (*split);
+}
+
+int	main(void)
+{
+	char const	s[] = "/bon/j/ou/r";
+	char		c = "/";
+	printf("%s", ft_split(s,c));
 }
