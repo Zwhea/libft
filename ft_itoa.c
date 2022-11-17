@@ -6,7 +6,7 @@
 /*   By: wangthea <wangthea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 17:05:42 by wangthea          #+#    #+#             */
-/*   Updated: 2022/11/17 17:13:57 by wangthea         ###   ########.fr       */
+/*   Updated: 2022/11/17 17:45:53 by wangthea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,5 +53,7 @@ char    *ft_itoa(int n)
         n /= 10;
         i--;
     }
+    if (n > INT_MAX || n < INT_MIN)
+        return (-1);
     return (s);
 }
