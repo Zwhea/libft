@@ -6,7 +6,7 @@
 /*   By: twang <twang@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 15:34:09 by twang             #+#    #+#             */
-/*   Updated: 2022/11/18 15:26:58 by twang            ###   ########.fr       */
+/*   Updated: 2022/11/18 17:57:39 by twang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ typedef struct s_list
 	void			*content;
 	struct s_list	*next;
 }					t_list;
+
+/*----------------------------------------------------------------mandatory---*/
 
 int			ft_isalpha(int c);
 int			ft_isdigit(int c);
