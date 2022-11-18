@@ -6,13 +6,13 @@
 /*   By: twang <twang@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 17:05:42 by wangthea          #+#    #+#             */
-/*   Updated: 2022/11/18 12:03:28 by twang            ###   ########.fr       */
+/*   Updated: 2022/11/18 15:54:59 by twang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_intlen(int n)
+static int	ft_intlen(int n)
 {
 	int	length;
 

@@ -6,22 +6,25 @@
 /*   By: twang <twang@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 08:21:47 by twang             #+#    #+#             */
-/*   Updated: 2022/11/18 11:53:54 by twang            ###   ########.fr       */
+/*   Updated: 2022/11/18 16:12:45 by twang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static void	*ft_free(void *s, size_t len)
+static void	*ft_free(char **s, size_t len)
 {
 	size_t	i;
-	char	*sb;
 
 	i = 0;
-	sb = (char *)s;
-	while (i <= len)
-		free(&s[i++]);
+	while (i < len)
+	{
+		free(s[i]);
+		s[i] = NULL;
+		i++;
+	}
 	free(s);
+	s = NULL;
 	return (NULL);
 }
 

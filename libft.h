@@ -6,16 +6,12 @@
 /*   By: twang <twang@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 15:34:09 by twang             #+#    #+#             */
-/*   Updated: 2022/11/18 12:04:17 by twang            ###   ########.fr       */
+/*   Updated: 2022/11/18 15:26:58 by twang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
-# include <string.h>
-# include <strings.h>
-# include <ctype.h>
-# include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
 # include <limits.h>

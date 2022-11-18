@@ -6,7 +6,7 @@
 /*   By: twang <twang@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 20:31:57 by wangthea          #+#    #+#             */
-/*   Updated: 2022/11/18 14:07:42 by twang            ###   ########.fr       */
+/*   Updated: 2022/11/18 16:48:15 by twang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,14 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 	t_list	*new;
 	t_list	*temp_new;
 
-	if (!lst)
+	if (!lst || !f)
 		return (NULL);
 	new = ft_lstnew((f(lst->content)));
+	if (!new)
+	{
+		ft_lstclear(&new, del);
+		return (NULL);
+	}
 	lst = lst->next;
 	temp_new = new;
 	while (lst)
@@ -35,6 +40,3 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 	}
 	return (new);
 }
-
-//ft_lstnew?
-//ft_delone or clear???
