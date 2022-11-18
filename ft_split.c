@@ -6,21 +6,57 @@
 /*   By: twang <twang@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 17:52:01 by twang             #+#    #+#             */
-/*   Updated: 2022/11/15 17:56:06 by twang            ###   ########.fr       */
+/*   Updated: 2022/11/16 16:26:18 by twang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	**ft_split(char const *s, char c)
+static int	word_count(char const *s, char c)
 {
-	
-	return (*split);
+	int	i;
+	int	nb_word;
+
+	i = 0;
+	nb_word = 0;
+	while (s[i])
+	{
+		while (s[i] && s[i] == c)
+			i++;
+		if (s[i] && s[i] != c)
+		{
+			nb_word++;
+			while (s[i] && s[i] != c)
+				i++;
+		}
+	}
+	return (nb_word);
 }
 
-int	main(void)
+char	**ft_split(char const *s, char c)
 {
-	char const	s[] = "/bon/j/ou/r";
-	char		c = "/";
-	printf("%s", ft_split(s,c));
+	int		i;
+	int		j;
+	int		k;
+	char	**split;
+
+	i = 0;
+	k = 0;
+	if (!s)
+		return (NULL);
+	split = ft_calloc(word_count(s, c) + 1, sizeof(char *));
+	if (!split)
+		return (NULL);
+	while (s[i] && k < word_count(s, c))
+	{
+		while (s[i] && s[i] == c)
+			i++;
+		j = i;
+		while (s[i] && s[i] != c)
+			i++;
+		split[k] = ft_substr(s, j, (i - j));
+		if (!split[k++])
+			return (ft_free(split, k));
+	}
+	return (split);
 }
