@@ -6,7 +6,7 @@
 #    By: twang <twang@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/07 15:41:17 by twang             #+#    #+#              #
-#    Updated: 2022/11/08 09:33:51 by twang            ###   ########.fr        #
+#    Updated: 2022/11/18 13:44:23 by twang            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,9 @@ NAME = libft.a
 
 HEADERS = libft.h
 SOURCES = $(shell find . -type f -name 'ft_*.c')
+BONUS_SOURCES	= $(shell find . -type f -name 'ft_*_bonus.c')
 OBJECTS = $(SOURCES:.c=.o)
+BONUS_OBJECTS = $(BONUS_SOURCES:.c=.o)
 
 CFLAGS = -Wall -Wextra -Werror -I .
 
@@ -25,9 +27,12 @@ $(NAME) : $(OBJECTS)
 
 %.o : %.c $(HEADERS) Makefile
 	$(CC) $(CFLAGS) -c $< -o $@
+	
+bonus : $(OBJECTS) $(BONUS_OBJECTS)
+	$(AR) rcs $(NAME) $^
 
 clean :
-	$(RM) $(OBJECTS)
+	$(RM) $(OBJECTS) $(BONUS_OBJECTS)
 
 fclean : clean 
 	$(RM) $(NAME)
@@ -35,4 +40,4 @@ fclean : clean
 re : fclean
 	$(MAKE) all
 
-.PHONY: all clean fclean re
+.PHONY: all bonus clean fclean re

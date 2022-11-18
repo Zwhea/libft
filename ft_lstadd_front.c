@@ -1,26 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_free.c                                          :+:      :+:    :+:   */
+/*   ft_lstadd_front_bonus.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: twang <twang@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/16 16:22:58 by twang             #+#    #+#             */
-/*   Updated: 2022/11/16 16:23:54 by twang            ###   ########.fr       */
+/*   Created: 2022/11/17 18:05:36 by wangthea          #+#    #+#             */
+/*   Updated: 2022/11/18 13:18:53 by twang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_free(void *s, size_t len)
+void	ft_lstadd_front(t_list **lst, t_list *new)
 {
-	size_t	i;
-	char	*sb;
-
-	i = 0;
-	sb = (char *)s;
-	while (i <= len)
-		free(&s[i++]);
-	free(s);
-	return (NULL);
+	if (!lst)
+		new->next = NULL;
+	else
+	{
+		new->next = *lst;
+		*lst = new;
+	}
 }

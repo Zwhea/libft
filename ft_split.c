@@ -5,12 +5,25 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: twang <twang@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/15 17:52:01 by twang             #+#    #+#             */
-/*   Updated: 2022/11/16 16:26:18 by twang            ###   ########.fr       */
+/*   Created: 2022/11/18 08:21:47 by twang             #+#    #+#             */
+/*   Updated: 2022/11/18 11:53:54 by twang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+static void	*ft_free(void *s, size_t len)
+{
+	size_t	i;
+	char	*sb;
+
+	i = 0;
+	sb = (char *)s;
+	while (i <= len)
+		free(&s[i++]);
+	free(s);
+	return (NULL);
+}
 
 static int	word_count(char const *s, char c)
 {
