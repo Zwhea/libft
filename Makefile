@@ -3,84 +3,66 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: twang <twang@student.42.fr>                +#+  +:+       +#+         #
+#    By: wangthea <wangthea@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/11/07 15:41:17 by twang             #+#    #+#              #
-#    Updated: 2022/11/18 18:03:37 by twang            ###   ########.fr        #
+#    Created: 2023/07/03 11:55:03 by wangthea          #+#    #+#              #
+#    Updated: 2023/07/04 12:29:57 by wangthea         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME =				libft.a
+include		config/headers.mk
+include		config/print.mk
+include		config/sources.mk
 
-HEADERS =			libft.h
-SOURCES = 			ft_isalpha.c	\
-					ft_isdigit.c	\
-					ft_isalnum.c	\
-					ft_isascii.c	\
-					ft_isprint.c	\
-					ft_strlen.c 	\
-					ft_memset.c	\
-					ft_bzero.c  	\
-					ft_memcpy.c	\
-					ft_memmove.c	\
-					ft_strlcpy.c 	\
-					ft_strlcat.c 	\
-					ft_toupper.c 	\
-					ft_tolower.c 	\
-					ft_strchr.c 	\
-					ft_strrchr.c	\
-					ft_strncmp.c	\
-					ft_memchr.c	\
-					ft_memcmp.c		\
-					ft_strnstr.c	\
-					ft_atoi.c		\
-					ft_calloc.c	\
-					ft_strdup.c	\
-					ft_substr.c	\
-					ft_strjoin.c	\
-					ft_strtrim.c	\
-					ft_split.c	\
-					ft_itoa.c		\
-					ft_strmapi.c	\
-					ft_striteri.c	\
-					ft_putchar_fd.c	\
-					ft_putstr_fd.c	\
-					ft_putendl_fd.c	\
-					ft_putnbr_fd.c	\
-			
-BONUS_SOURCES =	ft_lstnew.c		\
-				ft_lstadd_front.c	\
-				ft_lstsize.c		\
-				ft_lstlast.c		\
-				ft_lstadd_back.c	\
-				ft_lstdelone.c		\
-				ft_lstclear.c		\
-				ft_lstiter.c		\
-				ft_lstmap.c		\
-				
-OBJECTS = $(SOURCES:.c=.o)
-BONUS_OBJECTS = $(BONUS_SOURCES:.c=.o)
+.SILENT	:
 
-CFLAGS = -Wall -Wextra -Werror -I .
+#--static library--------------------------------------------------------------#
 
-all :	$(NAME)
+NAME	=	libft.a
 
-$(NAME) : $(OBJECTS)
-	$(AR) rcs $@ $^
+#--compilation flags-----------------------------------------------------------#
 
-%.o : %.c $(HEADERS) Makefile
-	$(CC) $(CFLAGS) -c $< -o $@
+CFLAGS	=	-Wall -Wextra -Werror -I .
+
+#--directory variables---------------------------------------------------------#
+
+OBJ_DIR	=	.objs
+
+#--objects---------------------------------------------------------------------#
+
+OBJECTS	=	$(addprefix $(OBJ_DIR)/, $(SOURCES:.c=.o))
+
+#--compilation rules-----------------------------------------------------------#
+
+all		:	$(NAME)
+
+$(NAME)	:	$(OBJECTS)
+			$(AR) rcs $@ $^
+			$(PRINT_CREATING)
+
+#--objects's compilation rule--------------------------------------------------#
+
+$(OBJ_DIR)/%.o:	%.c $(HEADERS)
+				mkdir -p $(dir $@)
+				$(CC) $(CFLAGS) -c $< -o $@
+				$(PRINT_COMPILING)
 	
-bonus : $(OBJECTS) $(BONUS_OBJECTS)
-	$(AR) rcs $(NAME) $^
+#--clean, fclean & re----------------------------------------------------------#
 
-clean :
-	$(RM) $(OBJECTS) $(BONUS_OBJECTS)
+clean	:
+			$(RM) -rf $(OBJECTS)
+			$(PRINT_CLEAN)
 
-fclean : clean 
-	$(RM) $(NAME)
+fclean	:	
+			$(MAKE) clean 
+			$(RM) $(NAME)
+			$(PRINT_FCLEAN)
 
-re : fclean
-	$(MAKE) all
+re		:	
+			clear
+			$(MAKE) fclean
+			$(MAKE) all
+	
+#--PHONY-----------------------------------------------------------------------#
 
-.PHONY: all bonus clean fclean re
+.PHONY: all clean fclean re
